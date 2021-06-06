@@ -1,0 +1,57 @@
+﻿<Window x:Class="Memyento.Views.StatPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Memyento.Views"
+        mc:Ignorable="d"
+        Title="StatPage" Height="450" Width="800">
+    <Grid Background="SeaGreen">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+         </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="2"  Cursor="Hand" Source="..//prev.png">
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick"
+                              Command="{Binding PreviousStateCommand}"
+                              CommandParameter="{Binding ElementName=TxtBxMessage}"/>
+            </Image.InputBindings>
+        </Image>
+        <Image Grid.Row="0" Grid.Column="3" Cursor="Hand" Source="..//save.png">
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick"
+                              Command="{Binding SaveCommand}"
+                              CommandParameter="{Binding ElementName=TxtBxMessage}"/>
+            </Image.InputBindings>
+        </Image>
+        <Image Grid.Row="0" Grid.Column="4" Cursor="Hand" Source="..//next.png" >
+            <Image.InputBindings>
+                <MouseBinding Gesture="LeftClick" 
+                              Command="{Binding NextStateCommand}"
+                              CommandParameter="{Binding ElementName=TxtBxMessage}"/>
+            </Image.InputBindings>
+        </Image>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="5" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 VerticalScrollBarVisibility="Auto"
+                 FontSize="18" 
+                 Margin="5" 
+                 BorderThickness="3"
+                 BorderBrush="Aqua"
+                 TextWrapping="Wrap"
+                 Background="White" x:Name="TxtBxMessage"
+                 Text="{Binding CurrentMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Window>
